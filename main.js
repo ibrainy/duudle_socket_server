@@ -1,6 +1,6 @@
 var pm2 = require('pm2');
 
-var MACHINE_NAME = 'duudle';
+var MACHINE_NAME = 'duudle_socket_server';
 var PRIVATE_KEY  = 'y4y1xt4tuo7eqqr';   // Keymetrics Private key
 var PUBLIC_KEY   = 'vqkosx2vp2rkq5u';   // Keymetrics Public  key
 
@@ -15,8 +15,7 @@ pm2.connect(function() {
     instances : instances,
     max_memory_restart : maxMemory + 'M',   // Auto restart if process taking more than XXmo
     env: {                            // If needed declare some environment variables
-      "NODE_ENV": "production",
-      "PORT": 8080
+      "NODE_ENV": "production"
     },
     post_update: ["npm install"]       // Commands to execute once we do a pull from Keymetrics
   }, function() {
