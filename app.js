@@ -80,7 +80,7 @@ io.on('connection', function (socket) {
 			var data = {
 				'answer' : msg.word
 			};
-			socket.emit('guessWrong',data);
+			io.sockets.in(socket.roomId).emit('guessWrong',data);
 			console.log('猜错了');
 		}
 	});
