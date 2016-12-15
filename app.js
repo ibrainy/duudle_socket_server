@@ -73,7 +73,8 @@ io.on('connection', function (socket) {
 		if(drawInfo.guessWord == msg.word){
 			console.log('有人猜对了');
 			var data = {
-				'userName':socket.userName
+				'userName':socket.userName,
+				'answer' : msg.word
 			};
 			io.sockets.in(socket.roomId).emit('guessEnd', data);
 		}else{
