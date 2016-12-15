@@ -78,6 +78,7 @@ io.on('connection', function (socket) {
 			io.sockets.in(socket.roomId).emit('guessEnd', data);
 		}else{
 			var data = {
+				'userName':socket.userName,
 				'answer' : msg.word
 			};
 			io.sockets.in(socket.roomId).emit('guessWrong',data);
