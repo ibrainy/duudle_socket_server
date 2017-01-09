@@ -67,6 +67,10 @@ io.on('connection', function (socket) {
 	socket.on('setGuessWord',function(msg){
 		console.log(msg);
 		drawInfo.guessWord = msg.word;
+		var data = {
+			'answerLength' : drawInfo.guessWord.length
+		};
+		io.sockets.in(socket.roomId).emit('answerLength', data);
 	});
 	socket.on('getGuessWord',function(msg){
 		console.log('getGuessWord');
